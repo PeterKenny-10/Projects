@@ -8,8 +8,15 @@ print(df.head)
 
 print(df.info())
 
+
+
+
+
 brics = pd.read_csv("Olympic_medals.csv", index_col=0)
 print(brics)
+
+
+
 
 year_wise_total_medal= df.groupby('Year')['Medal'].count()
 print(year_wise_total_medal)
@@ -40,6 +47,18 @@ year_wise_total_medal.plot(kind='bar')
 plt.xlabel('Year')
 plt.ylabel('Medals')
 plt.show()
+
+United_States = df[df['Country']== 'United States']
+United_States_medals = United_States.groupby('Year')['Medal'].count()
+print(United_States_medals)
+
+Spain = df[df['Country']== 'Spain']
+Spain_medals = Spain.groupby('Year')['Medal'].count()
+print(Spain_medals)
+
+hosts ={'Montreal':'Canada','Moscow':'USSR','Los Angeles':'USA', 'Soeul':'South Korea','Barcelona':'Spain','Atlanta':'USA','Sydney':'Australia','Athens':'Greece','Beijing':'China'}
+for key, value in hosts.items():
+    print('The host city of '+str(key)+ ' is in '+ str(value))
 
 
 
