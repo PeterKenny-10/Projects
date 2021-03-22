@@ -9,25 +9,23 @@ print(df.head)
 
 print(df.info())
 
+
 print(df[df.isnull().any(axis=1)])
 df.dropna(axis=0,inplace=True )
 print(df.shape)
 
+hosts ={'Montreal':'Canada','Moscow':'USSR','Los Angeles':'USA', 'Soeul':'South Korea','Barcelona':'Spain','Atlanta':'USA','Sydney':'Australia','Athens':'Greece','Beijing':'China'}
+for key, value in hosts.items():
+    print('The host city of '+str(key)+ ' is in '+ str(value))
 
-
-
-
-year_wise_total_medal= df.groupby('Year')['Medal'].count()
-print(year_wise_total_medal)
-
-year_wise_medal= df.groupby('Year')['Medal'].value_counts()
-print(year_wise_medal)
-
-year_wise_gender= df.groupby('Year')['Gender'].value_counts()
-print(year_wise_gender)
 
 Ireland =df[df['Country']=='Ireland']
+
 print(Ireland)
+np_Ireland=np.array(Ireland)
+print(np_Ireland.shape)
+
+
 
 
 Ireland_medals = Ireland.groupby('Year')['Medal'].count()
@@ -46,16 +44,11 @@ plt.show()
 
 
 
-year_wise_total_medal.plot(kind='bar')
+Ireland_sex.plot(kind='bar')
+plt.title('Irelands Olympic medals male and Female', fontsize=20, color ='Green')
 plt.xlabel('Year')
 plt.ylabel('Medals')
 plt.show()
-
-
-
-hosts ={'Montreal':'Canada','Moscow':'USSR','Los Angeles':'USA', 'Soeul':'South Korea','Barcelona':'Spain','Atlanta':'USA','Sydney':'Australia','Athens':'Greece','Beijing':'China'}
-for key, value in hosts.items():
-    print('The host city of '+str(key)+ ' is in '+ str(value))
 
 
 UK_Ireland=['Ireland', 'United Kingdom']
